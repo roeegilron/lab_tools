@@ -10,8 +10,8 @@ else
     skipthis = 0;
 end
 if ~skipthis
+    addpath(genpath(params.eegtoolboxfolder));
     for b = 1:length(bdffnms)
-        addpath(genpath('/Users/roee/Starr_Lab_Folder/Data_Analysis/First_Pass_Data_Analysis/code/toolboxes/eeglab14_1_0b'));
         start = tic;
         [pn,fn,ext] = fileparts(bdffnms{b});
         EEG = pop_biosig(bdffnms{b});
@@ -30,6 +30,7 @@ if ~skipthis
         fprintf('saved file %d out of %d in %f\n',b,length(bdffnms),toc(start));
         restoredefaultpath;
     end
+    rmpath(genpath(params.eegtoolboxfolder));
 end
-rmpath(genpath('/Users/roee/Starr_Lab_Folder/Data_Analysis/First_Pass_Data_Analysis/code/toolboxes/eeglab14_1_0b'));
+
 end
